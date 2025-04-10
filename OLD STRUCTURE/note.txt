@@ -1,0 +1,4 @@
+à ajouter : 
+- surrender
+- assurance (faire attention aux cas de split)
+- cas speciaux (limite split ...)
