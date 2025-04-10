@@ -8,21 +8,6 @@ import random
 
 import agent.utils_agent as utils_agent
 
-########################################################
-# Fonctions utiles pour l'IA
-########################################################
-
-def valeur_carte(carte):
-    if carte in ['J', 'Q', 'K']:
-        return 10
-    else:
-        return carte
-    
-def valeur_main(main):
-    return sum(valeur_carte(carte) for carte in main)
-
-########################################################
-
 
 def agent_BJ(id_action, action_stack, main_joueur, main_dealer, running_count, sabot):
 
@@ -32,6 +17,7 @@ def agent_BJ(id_action, action_stack, main_joueur, main_dealer, running_count, s
     if(id_action == 0):
         return 10
 
+    '''
     # gestion de l'assurance
     if(id_action == 1):
         if true_count > 2:
@@ -42,16 +28,14 @@ def agent_BJ(id_action, action_stack, main_joueur, main_dealer, running_count, s
     # gestion du surrender
     if(id_action == 2):
         return utils_agent.surrender(main_joueur, main_dealer, true_count)
+    '''
     
     # gestion des splits
     if(id_action == 3):
-        return utils_agent.model_split(main_joueur, main_dealer, true_count)
+        return utils_agent.agent_split(main_joueur, main_dealer, False)
     
     # gestion stand hit double
     if(id_action == 4):
-        double_possible = len(main_joueur) == 2
-        if(valeur_main(main_joueur) == 21):
-            return 'S'  
-        return random.choice(['H', 'S', 'D'])
+        return utils_agent.agent_stand_hit_double(main_joueur, main_dealer)
     
     return 0

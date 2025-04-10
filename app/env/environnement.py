@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 import env.utils_env as utils_env
-from agent.agent import agent_BJ
+from app.agent.agent_BJ import agent_BJ
 
 NB_SIMULATIONS = 100  # ← à modifier par le programmeur
 
